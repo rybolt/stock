@@ -8,15 +8,13 @@ public static class FileLogger
 
     public static void LogException(Exception e, string identifier)
     {
-        using (StreamWriter writer = new StreamWriter(logFilePath, true))
-        {
-            writer.WriteLine(identifier);
-            writer.WriteLine("Date: " + DateTime.Now.ToString());
-            writer.WriteLine("Message: " + e.Message);
-            writer.WriteLine("StackTrace: " + e.StackTrace);
-            writer.WriteLine("Source: " + e.Source);
-            writer.WriteLine("TargetSite: " + e.TargetSite);
-            writer.WriteLine(new string('-', 80));
-        }
+        using StreamWriter writer = new(logFilePath, true);
+        writer.WriteLine(identifier);
+        writer.WriteLine("Date: " + DateTime.Now.ToString());
+        writer.WriteLine("Message: " + e.Message);
+        writer.WriteLine("StackTrace: " + e.StackTrace);
+        writer.WriteLine("Source: " + e.Source);
+        writer.WriteLine("TargetSite: " + e.TargetSite);
+        writer.WriteLine(new string('-', 80));
     }
 }

@@ -2,11 +2,26 @@
 using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
 
-namespace StocksDataImport
+namespace StocksDataImport.Model
 {
-    public class StockMap : ClassMap<Stock.Data.Stock>
+    /// <summary>
+    /// need to map to an intermediate data structure to get flat data from .csv
+    /// </summary>
+    public class StockImportData
     {
-        public StockMap()
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public decimal Price { get; set; }
+        public decimal Open { get; set; }
+        public decimal High { get; set; }
+        public decimal Low { get; set; }
+        public long Volume { get; set; }
+        public decimal Change { get; set; }
+    }
+
+    public class StockRawDataMap : ClassMap<StockImportData>
+    {
+        public StockRawDataMap()
         {
             Map(m => m.Date).Name("Date");
             Map(m => m.Price).Name("Price");
@@ -17,8 +32,6 @@ namespace StocksDataImport
                 .TypeConverter<VolumeConverter>();
             Map(m => m.Change).Name("Change %")
                 .TypeConverter<ChangeConverter>();
-            Map(m => m.Ticker).Ignore(); // Ignore if not in CSV
-            Map(m => m.Name).Ignore(); // Ignore if not in CSV
             Map(m => m.Id).Ignore();
         }
 
@@ -38,8 +51,6 @@ namespace StocksDataImport
             }
         }
     }
-
-
 
     public class VolumeConverter : DefaultTypeConverter
     {
@@ -74,7 +85,6 @@ namespace StocksDataImport
             catch (Exception) { return 0; } //sry, data just for practice UI
         }
     }
-
 
     public class ChangeConverter : DefaultTypeConverter
     {
