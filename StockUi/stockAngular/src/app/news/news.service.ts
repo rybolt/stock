@@ -8,7 +8,7 @@ import { NewsQuery } from './news-query.model';
   providedIn: 'root',
 })
 export class NewsService {
-  private baseUrl = 'https://newsapi.org/v2/top-headlines'; // Base API endpoint, this can change and need to add logic to make more dynamic. for now just testing the api
+  private baseUrl = 'https://newsapi.org/v2/everything'; // Base API endpoint, this can change and need to add logic to make more dynamic. for now just testing the api
 
   constructor(private http: HttpClient) {}
 

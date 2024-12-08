@@ -24,16 +24,17 @@ export class NewsComponent implements OnInit {
 
   fetchNews(): void {
     const query: NewsQuery = {
-      // q: 'Apple',                   // Example search term
-      // from: '2024-12-08',           // Example date
-      // sortBy: 'popularity',
-      country: 'us',
-      apiKey: 'c7163748ac2644deacb54473fb2741fb', // Replace with your API key
+      q: 'Apple',                   // Example search term
+      from: '2024-12-01',           // Example date
+      sortBy: 'popularity',
+      apiKey: 'c7163748ac2644deacb54473fb2741fb', // todo: get this in auth process on the User object
     };
 
     this.newsService.getNews(query).subscribe(
       (data) => {
-        this.newsArticles = data.articles;
+        this.newsArticles = data.articles.filter( article =>
+          article.source && article.source.name !== '[Removed]' && article.source.id !== null
+        );
         this.loading = false;
       },
       (err) => {

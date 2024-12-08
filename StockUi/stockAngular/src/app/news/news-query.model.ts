@@ -4,6 +4,5 @@ export interface NewsQuery {
     to?: string;            // End date for articles
     sortBy?: 'relevancy' | 'popularity' | 'publishedAt'; // Sorting preference
     apiKey: string;         // API Key
-    country: string;
   }
   
