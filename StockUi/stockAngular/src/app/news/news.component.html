@@ -1,0 +1,31 @@
+<div *ngIf="loading" class="loading">
+    Loading news...
+  </div>
+  
+  <div *ngIf="error" class="error">
+    <p>Something went wrong while fetching the news. Please try again later.</p>
+  </div>
+  
+  <div *ngIf="!loading && !error && newsArticles.length > 0">
+    <h1>News Articles</h1>
+    <div class="articles">
+      <div *ngFor="let article of newsArticles" class="article-card">
+        <img
+          *ngIf="article.urlToImage"
+          [src]="article.urlToImage"
+          [alt]="article.title"
+          class="article-image"
+        />
+        <h2>{{ article.title }}</h2>
+        <p class="author">{{ article.author || 'Unknown Author' }}</p>
+        <p class="description">{{ article.description }}</p>
+        <a [href]="article.url" target="_blank">Read more</a>
+        <p class="published">Published on: {{ article.publishedAt | date }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!loading && !error && newsArticles.length === 0" class="no-results">
+    <p>No news articles found for your query.</p>
+  </div>
+  

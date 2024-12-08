@@ -1,0 +1,65 @@
+.loading {
+    text-align: center;
+    font-size: 1.2em;
+    margin: 20px 0;
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .articles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .article-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 300px;
+    padding: 15px;
+    text-align: left;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .article-card h2 {
+    font-size: 1.1em;
+    margin: 10px 0;
+  }
+  
+  .article-card img.article-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .article-card .author {
+    font-style: italic;
+    color: #555;
+  }
+  
+  .article-card .description {
+    margin: 10px 0;
+  }
+  
+  .article-card a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  
+  .article-card a:hover {
+    text-decoration: underline;
+  }
+  
+  .no-results {
+    text-align: center;
+    color: #777;
+    font-size: 1.2em;
+    margin: 20px 0;
+  }
+  
