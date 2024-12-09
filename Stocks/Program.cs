@@ -21,7 +21,7 @@ public partial class Program
         using var context = new StockContext();
         //context.Users.Add(new User() { Email = "tigerShark@icloud.com", Name = "Tiger Wodz", NewsKeywords = ["Apple"] });
         //context.Users.Add(new User() { Email = "laLuna@gmail.com", Name = "Diego Luna", NewsKeywords = ["Nvidia"] });
-        context.Users.Add(new User() { Email = "theOracle@omaha.com", Name = "Warren Buffet", NewsKeywords = ["Nvda", "Aapl","Amzn"] });
+        context.Users.Add(new User() { Email = "theOracle@omaha.com", Name = "Warren Buffet", NewsKeywords = ["Nvda", "Aapl","Amzn"], Password= "theOracle123" });
         context.SaveChanges();
     }
 

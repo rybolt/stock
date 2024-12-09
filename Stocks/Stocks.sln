@@ -10,10 +10,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{B2EF01AC-50E9-4546-9D97-35326668BFDA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{B19ED480-6E54-42E4-8A92-0CDCA2AD8F58}"
+	ProjectSection(SolutionItems) = preProject
+		..\StockUi\stockAngular\README.md = ..\StockUi\stockAngular\README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockData", "..\StockData\StockData.csproj", "{FED2C407-6172-469A-A169-AC1B8DDCBC18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockApi", "..\StockApi\StockApi.csproj", "{D3E19C2D-8E22-4E0D-8AE8-E4C057325CD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockApi", "..\StockApi\StockApi.csproj", "{D3E19C2D-8E22-4E0D-8AE8-E4C057325CD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
