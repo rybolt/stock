@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NewsService } from './news.service';
 import { Article } from './news.model';
 import { NewsQuery } from './news-query.model';
+import { API_CONFIG } from './config';
 
 @Component({
   selector: 'app-news',
@@ -27,7 +28,7 @@ export class NewsComponent implements OnInit {
       q: 'Apple',                   // Example search term
       from: '2024-12-01',           // Example date
       sortBy: 'popularity',
-      apiKey: 'c7163748ac2644deacb54473fb2741fb', // todo: get this in auth process on the User object
+      apiKey: API_CONFIG.apiKey, 
     };
 
     this.newsService.getNews(query).subscribe(
