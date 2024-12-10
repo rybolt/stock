@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { NewsComponent } from './news/news.component';
-import { LoginComponent } from './login/login.component';
+import { Router, NavigationEnd, RouterOutlet} from '@angular/router';
 
 // import { HTTP_INTERCEPTORS } from '@angular/common/http';
 // import {AuthInterceptor } from './auth.interceptor'
@@ -10,9 +8,10 @@ import { LoginComponent } from './login/login.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NewsComponent, LoginComponent],
-  templateUrl: './app.component.html',
+  imports: [CommonModule, RouterOutlet],
+  //templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  template: '<router-outlet></router-outlet>'
   // providers: [
   //   {
   //     provide: HTTP_INTERCEPTORS,
@@ -22,5 +21,13 @@ import { LoginComponent } from './login/login.component';
   // ]
 })
 export class AppComponent {
-  title = 'stockAngular';
+  
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        console.log('Navigated to:', event.url);
+      }
+    });
+  }
+  
 }
