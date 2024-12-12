@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
 import { NewsComponent } from './news/news.component';
+import { StockChartComponent } from './stock-chart/stock-chart.component';
 import { AuthService } from './login/auth.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NewsComponent],
+  imports: [NewsComponent,StockChartComponent],
   template: `
-    <h1>Welcome {{ username }} </h1>
+    <h3 class="p-3">
+    Welcome
+      <small class="text-muted">{{username}}</small>
+    </h3>
+    <div><app-stock-chart></app-stock-chart></div>
     <div><app-news></app-news></div>
   `,
 })

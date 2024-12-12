@@ -1,31 +1,113 @@
-<div *ngIf="loading" class="loading">
-    Loading news...
-  </div>
+
+
+   <div class="container mt-4">
+    <div *ngIf="loading" class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
   
-  <div *ngIf="error" class="error">
-    <p>Something went wrong while fetching the news. Please try again later.</p>
-  </div>
+    <div *ngIf="error" class="alert alert-danger">
+      Error fetching news. Please try again later.
+    </div>
   
-  <div *ngIf="!loading && !error && newsArticles.length > 0">
-    <h1>News Articles</h1>
-    <div class="articles">
-      <div *ngFor="let article of newsArticles" class="article-card">
-        <img
-          *ngIf="article.urlToImage"
-          [src]="article.urlToImage"
-          [alt]="article.title"
-          class="article-image"
-        />
-        <h2>{{ article.title }}</h2>
-        <p class="author">{{ article.author || 'Unknown Author' }}</p>
-        <p class="description">{{ article.description }}</p>
-        <a [href]="article.url" target="_blank">Read more</a>
-        <p class="published">Published on: {{ article.publishedAt | date }}</p>
+    <div class="row" *ngIf="!loading && !error">
+      <div
+        class="col-md-4 mb-4"
+        *ngFor="let article of newsArticles"
+      >
+        <div class="card" style="width: 18rem;">
+          <img
+            class="card-img-top"
+            [src]="article.urlToImage || 'https://via.placeholder.com/150'"
+            alt="{{ article.title }}"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ article.title }}</h5>
+            <p class="card-text">
+              {{ article.description || 'No description available.' }}
+            </p>
+            <a
+              [href]="article.url"
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Read more</a
+            >
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <!-- <div class="container mt-4">
+    <div *ngIf="loading" class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
   
-  <div *ngIf="!loading && !error && newsArticles.length === 0" class="no-results">
-    <p>No news articles found for your query.</p>
-  </div>
+    <div *ngIf="error" class="alert alert-danger">
+      Error fetching news. Please try again later.
+    </div>
+  
+    <div *ngIf="!loading && !error">
+      <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div
+            class="carousel-item"
+            *ngFor="let group of groupArticles(newsArticles, 3); let i = index"
+            [class.active]="i === 0"
+          >
+            <div class="row">
+              <div
+                class="col-md-4"
+                *ngFor="let article of group"
+              >
+                <div class="card mb-4" style="width: 18rem;">
+                  <img
+                    class="card-img-top"
+                    [src]="article.urlToImage || 'https://via.placeholder.com/150'"
+                    alt="{{ article.title }}"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">{{ article.title }}</h5>
+                    <p class="card-text">
+                      {{ article.description || 'No description available.' }}
+                    </p>
+                    <a
+                      [href]="article.url"
+                      class="btn btn-primary"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Read more</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#newsCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#newsCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+  
+  
   

@@ -17,6 +17,15 @@ namespace StockApi
 
             // Add services to the container.
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                  builder => builder.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  );
+            });
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -24,8 +33,10 @@ namespace StockApi
 
             var app = builder.Build();
 
+            app.UseRouting();
+            app.UseCors("AllowAll");
 
-            // Middleware for Basic Authentication with EF
+            // Basic Authentication with EF  [must come after CORS]
             app.Use(async (context, next) =>
             {
                 //note: this will do for now, but later we will add => JWT (JSON Web Token) or similar token mechanisms.
@@ -73,6 +84,8 @@ namespace StockApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+       
 
             // Example endpoint
             app.MapGet("/", () => "Hello, authenticated user!");
