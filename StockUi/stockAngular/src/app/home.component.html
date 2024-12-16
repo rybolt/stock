@@ -1,0 +1,17 @@
+<div class="header">
+    <div class="profile">
+      <img src="https://s3.tradingview.com/userpics/22543986-i023_mid.png" alt="User Profile" class="profile-img" (click)="toggleDropdown()">
+      <div class="dropdown" *ngIf="dropdownOpen">
+        <a (click)="setTicker()">Set Ticker</a>
+        <a (click)="logout()">Logout</a>
+      </div>
+    </div>
+    <h4 class="p-3">
+      Welcome
+      <small class="text-muted">{{username}}</small>
+    </h4>
+  </div>
+  <div class="content">
+    <div class="chart"><app-stock-chart></app-stock-chart></div>
+    <div class="news"><app-news></app-news></div>
+  </div>

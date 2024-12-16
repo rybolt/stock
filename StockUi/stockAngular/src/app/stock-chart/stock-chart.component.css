@@ -2,3 +2,10 @@
     margin-top: 20px;
   }
   
+  #myChart {
+    display: block !important;
+    height: 400px !important;
+    width: 600px !important;
+    margin-top: 20px !important;
+  }
+  
